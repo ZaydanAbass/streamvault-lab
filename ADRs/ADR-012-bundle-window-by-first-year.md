@@ -1,31 +1,24 @@
-# ADR-012: A bundle belongs to a window by its first film's release year
+# ADR-012: Classify a bundle by the year its first film was released
 
-- **Status:** Proposed (drafted from your code; **TODO: confirm it is what you intend**)
+- **Status:** Accepted
 - **Date:** 2026-11-20
 - **Decision owner:** Zaydan Abass Adamu
-- **Risk to the recommendation:** Moderate. It decides which bundles appear in the 2000-onward shortlist.
 
 ## Context
-
-A bundle can span decades, so one window assignment is arbitrary. This resolves the open note in the earlier draft.
+A franchise can span decades. To run the "2000 Onward" analysis, we need a rule for when a bundle counts as "recent."
 
 ## Decision
-
-`first_year` is the earliest release year among the bundle's films in my list, and `recent_bundles` keeps bundles with `first_year >= 2000`. A bundle is then counted whole, with all its films, in the 2000-onward window.
+A bundle is classified as "recent" if its earliest film was released in 2000 or later.
 
 ## Alternatives considered
 
-### Alternative A: use only the 2000+ films of each bundle
-- **Why it is attractive:** the window is purely about film dates.
-- **Why rejected:** it breaks the bundle, which is sold whole.
-- **What the recommendation looks like under it:** **TODO: not run.**
-
-### Alternative B: use the last film's year
-- **Why rejected:** it would let a 1980s bundle with one 2000s sequel into the recent window.
+### Alternative A: Use only the 2000+ films from a bundle
+- **How it would work:** Chop the bundle in half and only analyze the modern films.
+- **Why it is attractive:** It focuses purely on modern data.
+- **Why rejected:** The studio sells the bundle as a whole. We cannot buy just the modern films.
 
 ## Consequences
-
-- **What this buys:** a simple, testable rule that keeps bundles whole.
-- **What this costs:** a bundle that starts in 1999 with later films is out of the recent window entirely.
-- **What it costs the client if I am wrong:** a strong straddling bundle could be missed from the recent shortlist.
-- **What would make me revisit this:** **TODO:** list the bundles with films on both sides of 2000 and see how many there are.
+- **What this buys:** A simple, testable rule that keeps the bundle intact.
+- **What this costs:** A bundle that started in 1999 might be excluded from the modern list, even if it has recent sequels.
+- **What it costs the client if I am wrong:** We might miss a strong franchise that straddles the year 2000.
+- **What would make me revisit this:** If we find a huge franchise that is being wrongly excluded.

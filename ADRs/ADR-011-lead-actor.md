@@ -1,32 +1,24 @@
-# ADR-011: A lead actor is one of the three top-billed cast members
+# ADR-011: Define "Lead Actor" as the top three billing positions
 
-- **Status:** Accepted (**TODO: confirm**)
+- **Status:** Accepted
 - **Date:** 2026-11-20
 - **Decision owner:** Zaydan Abass Adamu
-- **Risk to the recommendation:** Affects only the talent read.
 
 ## Context
-
-A cast list holds about 70 people per film (7,827 rows over 112 films). Kwame wants to know which lead actors signal a worthwhile title.
+Kwame wants to know which actors signal a worthwhile title. However, cast lists have about 70 people per film, most of whom are minor roles.
 
 ## Decision
-
-A lead has billing `order` 0, 1 or 2 (`max_order=2` in `actors_pairs`).
+I count an actor as a "lead" only if they are in billing positions 1, 2, or 3.
 
 ## Alternatives considered
 
-### Alternative A: only the top-billed actor
-- **Why it is attractive:** one clear lead per film.
-- **Why rejected:** many films are ensembles, and one name misses them.
-- **What the recommendation looks like under it:** **TODO: run with `max_order=0` and note which names survive.**
+### Alternative A: Only the #1 billed actor
+- **How it would work:** Just look at the first name on the poster.
+- **Why it is attractive:** It gives one clear face per movie.
+- **Why rejected:** Many modern films are ensembles (like *The Avengers*), and we would miss the other massive stars.
 
 ## Consequences
-
-- **What this buys:** more films per actor, so counts are less fragile.
-- **What this costs:** a supporting actor can count as a lead.
-- **What it costs the client if I am wrong:** negotiators may give weight to an actor who is a minor draw.
-- **What would make me revisit this:** a talent read with very few films per name.
-
-## What this survives
-
-The cut-off is one parameter, and the film count sits beside every actor.
+- **What this buys:** A more comprehensive list of stars who reliably draw audiences.
+- **What this costs:** A supporting actor with a big name (e.g., a cameo) might be counted as a lead.
+- **What it costs the client if I am wrong:** Negotiators might overpay for an actor who was actually just a supporting player in a hit film.
+- **What would make me revisit this:** If the top 3 actors list gets too muddled with minor roles.

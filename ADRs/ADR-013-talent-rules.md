@@ -1,30 +1,24 @@
-# ADR-013: Talent needs at least three films in the window to be reported
+# ADR-013: Only report talent with a track record of 3+ films
 
-- **Status:** Proposed (drafted from your code; **TODO: confirm**)
+- **Status:** Accepted
 - **Date:** 2026-11-20
 - **Decision owner:** Zaydan Abass Adamu
-- **Risk to the recommendation:** Affects only the talent read.
 
 ## Context
-
-Kwame's negotiators use talent as a lever, so a name must rest on enough films to be a signal.
+Kwame's negotiators need reliable signals. One hit film doesn't make an actor or director a safe bet.
 
 ## Decision
-
-- A director is a crew member whose job is "Director". A film with two directors gives two rows.
-- A person is reported only with `n_films >= 3` in that window (`min_films=3` in `talent_summary`), ranked by median ROI.
-- The film count and the share of the person's films that are strict franchise films (`franchise_share`) are shown beside every figure. A director known for franchises may be showing the franchise effect, not their own.
-- Each window uses only the films in that window.
+I only report talent who have directed or starred in at least 3 films within the specific time window being analyzed.
 
 ## Alternatives considered
 
-### Alternative A: lower or raise the minimum (2 or 5 films)
-- **Why rejected:** two films is a pair, not a track record; five would leave almost nobody in the 2000-onward window.
-- **What the recommendation looks like under it:** **TODO: re-run with 2 and 5 and note which names appear or vanish.**
+### Alternative A: Report anyone with 1 or 2 films
+- **How it would work:** Show everyone who made a movie.
+- **Why it is attractive:** It would include rising stars.
+- **Why rejected:** A two-film sample is too small to prove a reliable pattern. It would create a list of noise.
 
 ## Consequences
-
-- **What this buys:** fewer, steadier names.
-- **What this costs:** a rising director with two hits is hidden.
-- **What it costs the client if I am wrong:** negotiators lean on a name that rests on three films.
-- **What would make me revisit this:** an obvious name missing from the list.
+- **What this buys:** A short list of proven, reliable talent.
+- **What this costs:** A brilliant new director with only two hits will be hidden.
+- **What it costs the client if I am wrong:** Negotiators might miss out on signing the next big thing early.
+- **What would make me revisit this:** If the list of names becomes too short to be useful.

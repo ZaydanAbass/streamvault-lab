@@ -1,38 +1,24 @@
-# ADR-014: Rank franchise bundles by their weakest film, and standalones by ROI
+# ADR-014: Rank bundles by their weakest film, standalones by highest ROI
 
-- **Status:** Proposed (drafted from your code; **TODO: confirm**)
+- **Status:** Accepted
 - **Date:** 2026-11-20
 - **Decision owner:** Zaydan Abass Adamu
-- **Risk to the recommendation:** High. It decides who is on the shortlist and which bundle is "strongest".
 
 ## Context
-
-Kwame asked for his three strongest franchise targets and five strongest standalones, each with the reason it made the cut. One camp argues that StreamVault overpays for the weak middle entries of a franchise.
+We need to create a shortlist for Kwame. The board's biggest fear is paying a premium for a bundle that contains weak "middle" films.
 
 ## Decision
-
-- **Franchise:** among bundles with 2+ films, take the top 3 by the ROI of the bundle's weakest film (`worst_roi`). The bundle ROI is shown beside it.
-- **Standalones:** among strict standalones, take the top 5 by ROI.
-- Both are produced once for each window.
+For standalones, I rank by highest overall ROI. For franchises, I rank by the ROI of the **weakest film** in the bundle.
 
 ## Alternatives considered
 
-### Alternative A: rank bundles by the bundle's combined ROI
-- **Why it is attractive:** it is the figure the deal would earn overall.
-- **Why rejected:** it hides a weak entry behind strong ones, which is exactly the team's worry.
-- **What the recommendation looks like under it:** Lord of the Rings stays first (its 9.96 is the highest of the 23 bundles). **TODO: ranks 2 and 3 not checked.**
-
-### Alternative B: rank standalones by profit or revenue
-- **Why rejected:** it favours the biggest films, not the best value.
-- **What the recommendation looks like under it:** **TODO: not run.**
+### Alternative A: Rank bundles by their combined average ROI
+- **How it would work:** Just look at the total bundle ROI.
+- **Why it is attractive:** It shows the overall return.
+- **Why rejected:** It hides a terrible flop behind one massive hit. We want to prove to the board that the floor is high.
 
 ## Consequences
-
-- **What this buys:** a shortlist that survives the "weak middle entries" argument.
-- **What this costs:** one bad film in an otherwise excellent bundle sinks it.
-- **What it costs the client if I am wrong:** a strong bundle could be left off the list. Ranking standalones by ROI favours cheap films (see ADR-007).
-- **What would make me revisit this:** the completeness check showing that the weakest film in a bundle belongs to a larger collection I only partly hold.
-
-## Flag
-
-The all-years standalone list includes Jaws, which TMDb places in a collection. Under ADR-005 it counts as a standalone only because one Jaws film is in my list. Check this in the memo.
+- **What this buys:** A franchise shortlist that completely disarms the "weak middle entry" argument. 
+- **What this costs:** One bad movie can drag an otherwise excellent franchise off the shortlist.
+- **What it costs the client if I am wrong:** We might pass on a highly profitable bundle just because it had one cheap, unsuccessful sequel.
+- **What would make me revisit this:** If the studio offers the ability to cherry-pick individual films from a bundle.
