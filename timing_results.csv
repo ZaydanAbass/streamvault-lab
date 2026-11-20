@@ -1,0 +1,29 @@
+dataset,stage,cold_seconds,warm_median_seconds
+real data,read cache + flatten,4.01614,0.31347
+real data,join,0.01235,0.00845
+real data,profile,0.02406,0.01970
+real data,flags,0.00558,0.00501
+real data,kpi comparison,0.02547,0.02214
+real data,bundles + shortlists,0.02237,0.02242
+real data,talent read,0.34217,0.23110
+127 synthetic,read cache + flatten,3.56359,0.08366
+127 synthetic,join,0.00817,0.00801
+127 synthetic,profile,0.01907,0.01761
+127 synthetic,flags,0.00451,0.00480
+127 synthetic,kpi comparison,0.02140,0.02088
+127 synthetic,bundles + shortlists,0.01834,0.01854
+127 synthetic,talent read,0.04062,0.04284
+500 synthetic,read cache + flatten,12.38467,0.31676
+500 synthetic,join,0.01399,0.01379
+500 synthetic,profile,0.02114,0.01896
+500 synthetic,flags,0.00663,0.00513
+500 synthetic,kpi comparison,0.02256,0.02049
+500 synthetic,bundles + shortlists,0.01923,0.01883
+500 synthetic,talent read,0.04822,0.04645
+5000 synthetic,read cache + flatten,123.06728,3.45012
+5000 synthetic,join,0.08434,0.08532
+5000 synthetic,profile,0.02346,0.02245
+5000 synthetic,flags,0.00701,0.00689
+5000 synthetic,kpi comparison,0.02180,0.02165
+5000 synthetic,bundles + shortlists,0.02144,0.02253
+5000 synthetic,talent read,0.11037,0.11456
