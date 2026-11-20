@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pandas as pd
 
-CACHE_DIR = Path("cache")
+from config import CACHE_DIR
 
 
 def read_cache(kind):
