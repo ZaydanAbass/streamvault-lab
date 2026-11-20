@@ -4,7 +4,7 @@
 *   **Total raw lines in file:** 127 (including header)
 *   **Blank rows dropped:** 1 (Line 71 in the file)
 *   **Remaining input rows:** 126
-*   **Dropped by `explore.py` (8 rows):**
+*   **Dropped by `explore.py` (9 rows):**
     *   6 exact duplicate TMDb IDs removed.
     *   1 invalid ID (`-1`) removed.
     *   1 bad text (`N/A`) removed.
