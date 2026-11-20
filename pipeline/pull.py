@@ -10,11 +10,7 @@ from dotenv import load_dotenv
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-load_dotenv()
-API_KEY = os.environ["TMDB_API_KEY"]          # [] on purpose: no key, stop immediately
-BASE_URL = "https://api.themoviedb.org/3"
-CACHE_DIR = Path("cache")
-CACHE_DIR.mkdir(exist_ok=True)
+from config import API_KEY, BASE_URL, CACHE_DIR
 
 session = requests.Session()
 retry = Retry(total=5, backoff_factor=1,
