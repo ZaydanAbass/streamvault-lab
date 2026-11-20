@@ -14,7 +14,7 @@ A fully automated data pipeline that extracts, cleans, and analyzes candidate fi
 
 | What you asked for | Status | Evidence |
 | :--- | :--- | :--- |
-| A defensible recommendation | **Complete** | Bundles win in both windows (4.63x vs 4.00x all years; 4.08x vs 3.49x post-2000). |
+| A defensible recommendation | **Complete** | Bundles win in both windows (4.53x vs 4.00x all years; 4.05x vs 3.49x post-2000). |
 | A shortlist to negotiate from | **Complete** | Top bundles: LOTR, Ice Age, Avengers. Top recent standalones: Spirited Away, The Incredibles, Inception. |
 | A read on talent leverage | **Complete** | Directors are the stronger signal; Christopher Nolan is a top reliable indicator in the 2000-onward window. |
 | Deal note for strongest candidate | **Complete** | LOTR targeted with a proposed walk-away point anchored at 8.37x. |

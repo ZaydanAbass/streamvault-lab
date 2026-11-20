@@ -1,26 +1,14 @@
 import pandas as pd
-
-from stage5_profile import films
-
-
-# Group sizes
-def flag_franchise(films, min_films=1):
-    size = films.groupby("collection_id")["id"].transform("count")
-    return films["collection_id"].notna() & (size >= min_films)
-
-films["is_franchise"] = flag_franchise(films, min_films=1)    # loose: any collection
-films["is_franchise_strict"] = flag_franchise(films, min_films=2)    # a bundle needs 2+ films
-
-print(films["is_franchise"].sum(), films["is_franchise_strict"].sum())
+from config import WINDOW_CUTOFF_YEAR, MIN_BUNDLE_SIZE
 
 def add_flags(films):
-    return films.assign(
-        year=lambda d: pd.to_datetime(d["release_date"], errors="coerce").dt.year,
-        window_2000=lambda d: d["year"] >= 2000,
-        roi=lambda d: (d["revenue"] - d["budget"]) / d["budget"],
-        is_franchise=lambda d: d["collection_id"].notna(),
-    )
-
-films = add_flags(films)
-windows = {"all years": films, "2000 onward": films[films["window_2000"]]}
-
+    films = films.copy()
+    
+    # FIXED: Assert that no dates were lost during coercion
+    assert films["year"].notna().all(), "Null years found after date coercion"
+    
+    size = films.groupby("collection_id")["id"].transform("count")
+    films["is_franchise_strict"] = films["collection_id"].notna() & (size >= MIN_BUNDLE_SIZE)
+    films["window_2000"] = films["year"] >= WINDOW_CUTOFF_YEAR
+    
+    return films

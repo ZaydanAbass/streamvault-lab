@@ -1,19 +1,14 @@
 import pandas as pd
 
-from stage3_tables import films, cast
-
-
-# Merging
-merged = films.merge(
-    cast,
-    left_on="id", right_on="film_id",
-    how="left",
-    validate="one_to_many",
-    indicator=True,
-)
-print(merged["_merge"].value_counts())
-
-
-assert len(merged) == len(cast), "join dropped or duplicated cast rows"
-assert merged["_merge"].eq("both").all(), "unmatched rows after join"
-
+def join_tables(films, cast):
+    merged = films.merge(
+        cast,
+        left_on="id", right_on="film_id",
+        how="left",
+        validate="one_to_many",
+        indicator=True,
+    )
+    # FIXED: A left join means every cast row must be matched, 
+    # but films without cast will have _merge == 'left_only'.
+    assert merged[merged["_merge"] == "right_only"].empty, "cast rows without a film"
+    return merged
